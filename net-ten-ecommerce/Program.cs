@@ -53,8 +53,13 @@ builder.Services.AddControllers();
 builder.Services.AddValidation();
 
 // Services
+builder.Services.AddHttpClient();
 builder.Services.AddScoped<net_ten_ecommerce.Services.IPaymentService, net_ten_ecommerce.Services.PaymentService>();
 builder.Services.AddScoped<net_ten_ecommerce.Services.IInvoiceService, net_ten_ecommerce.Services.InvoiceService>();
+builder.Services.AddScoped<net_ten_ecommerce.Services.ICargoService, net_ten_ecommerce.Services.CargoService>();
+builder.Services.AddScoped<net_ten_ecommerce.Services.ArasCargoService>();
+builder.Services.AddScoped<net_ten_ecommerce.Services.MNGCargoService>();
+builder.Services.AddScoped<net_ten_ecommerce.Services.YurticiCargoService>();
 
 // Modern OpenAPI desteği (.NET 9+)
 builder.Services.AddOpenApi(options =>
