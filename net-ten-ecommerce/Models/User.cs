@@ -1,4 +1,3 @@
-using System.ComponentModel.DataAnnotations;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
@@ -19,8 +18,26 @@ public class User
     [BsonElement("fullName")]
     public string FullName { get; set; } = string.Empty;
 
+    [BsonElement("phone")]
+    public string? Phone { get; set; }
+
+    [BsonElement("roles")]
+    public List<UserRole> Roles { get; set; } = new();
+
+    [BsonElement("isActive")]
+    public bool IsActive { get; set; } = true;
+
+    [BsonElement("isEmailVerified")]
+    public bool IsEmailVerified { get; set; } = false;
+
+    [BsonElement("lastLoginAt")]
+    public DateTime? LastLoginAt { get; set; }
+
     [BsonElement("createdAt")]
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
+    [BsonElement("updatedAt")]
+    public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
 }
 
 public class LoginRequest
@@ -31,11 +48,10 @@ public class LoginRequest
 
 public class RegisterRequest
 {
-    [Required]
     public string Email { get; set; } = string.Empty;
-    [Required]
     public string Password { get; set; } = string.Empty;
     public string FullName { get; set; } = string.Empty;
+    public string? Phone { get; set; }
 }
 
 public class LoginResponse
@@ -43,4 +59,5 @@ public class LoginResponse
     public string Token { get; set; } = string.Empty;
     public string Email { get; set; } = string.Empty;
     public string FullName { get; set; } = string.Empty;
+    public List<string> Roles { get; set; } = new();
 }
