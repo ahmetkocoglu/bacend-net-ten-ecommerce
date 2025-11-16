@@ -51,6 +51,12 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 builder.Services.AddAuthorization();
 builder.Services.AddControllers();
 builder.Services.AddValidation();
+
+// Services
+builder.Services.AddScoped<net_ten_ecommerce.Services.IPaymentService, net_ten_ecommerce.Services.PaymentService>();
+builder.Services.AddScoped<net_ten_ecommerce.Services.IInvoiceService, net_ten_ecommerce.Services.InvoiceService>();
+
+// Modern OpenAPI desteği (.NET 9+)
 builder.Services.AddOpenApi(options =>
 {
     options.AddDocumentTransformer((document, context, cancellationToken) =>
