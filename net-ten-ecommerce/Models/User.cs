@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
@@ -30,7 +31,9 @@ public class LoginRequest
 
 public class RegisterRequest
 {
+    [Required]
     public string Email { get; set; } = string.Empty;
+    [Required]
     public string Password { get; set; } = string.Empty;
     public string FullName { get; set; } = string.Empty;
 }
